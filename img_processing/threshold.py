@@ -3,6 +3,7 @@ from PIL import Image
 import cv2
 import numpy as np
 import imutils
+from rembg import remove
 
 # threshold (임계값줘서 큰건 키우고, .. )
 # --> 문턱 값 이상이면 어떤 값으로 바꾸어주고 낮으면 0으로 바꾸어주는 기능
@@ -19,7 +20,6 @@ pil_img = Image.fromarray(ds.pixel_array)
 
 # Save as JPEG
 pil_img.save("../output/output.tif")
-
 src = cv2.imread("../output/output.tif", cv2.IMREAD_GRAYSCALE)
 
 # threshold
@@ -34,6 +34,14 @@ cv2.imwrite("../output/rotate.tif", rotated)
 flipped = cv2.flip(rotated, 1)
 cv2.imwrite("../output/flip.tif", flipped)
 
-## 이미지 크기 변형이 필요할 듯함 - 큰 이미지를 사용할 수록 연산속도가 느려짐
-## 1)이미지 자르기 
-## 2)
+# 배경제거
+rm_background = remove(flipped)
+cv2.imwrite("../output/back_img.tif", rm_background)
+
+# 이미지 자르기
+cut_img = rm_background[860:2750, 610:2500]
+cv2.imwrite("../output/cut_img.tif", cut_img)
+
+# 크기 조절
+resize_img = cv2.resize(cut_img, (224, 224))
+cv2.imwrite("../output/resize_img.tif", resize_img)
