@@ -12,7 +12,7 @@ import imutils
 '''
 
 # Load the DICOM file
-ds = pydicom.dcmread("../dcm/test1.dcm")
+ds = pydicom.dcmread("../dcm/20230726_112.dcm")
 
 # Convert DICOM pixel data to a PIL image object
 pil_img = Image.fromarray(ds.pixel_array)
@@ -22,7 +22,7 @@ pil_img.save("../output/output2.tif")
 src = cv2.imread("../output/output2.tif", cv2.IMREAD_GRAYSCALE)
 
 # 이미지 밝기 조절
-bright = cv2.add(src, 220)
+bright = cv2.add(src, 100)
 cv2.imwrite("../output/bright2.tif", bright)
 
 # 이미지 명암 조절

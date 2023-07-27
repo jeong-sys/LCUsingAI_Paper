@@ -13,10 +13,13 @@ src = cv2.imread("../output/output.tif", cv2.IMREAD_GRAYSCALE)
 
 # image_processing
 _, thr = cv2.threshold(src, 28, 255, cv2.THRESH_BINARY)
+
 rotated = imutils.rotate(thr, 180)
 flipped = cv2.flip(rotated, 1)
 rm_background = remove(flipped)
 cut_img = rm_background[860:2750, 610:2500]
+
+
 resize_img = cv2.resize(cut_img, (224, 224))
 
 # (224 x 244) image 
