@@ -1,4 +1,4 @@
-# 인공지능을 활용한 효율적인 학습 콘텐츠 관리 시스템 방안
+# 🤖 인공지능을 활용한 효율적인 학습 콘텐츠 관리 시스템 방안 🤖
 [![code](https://img.shields.io/badge/Code-Python-blue)](https://docs.python.org/3/license.html)
 > 2023한국전기전자학회
 ## 📖 Abstract
